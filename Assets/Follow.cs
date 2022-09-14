@@ -2,16 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wave : MonoBehaviour
+public class Follow : MonoBehaviour
 {
-    public Transform[] ground = new Transform[20];
-
-    float x = 0;
+    public Transform[] ground;
     float[] height = new float[20];
 
-    public float amplitude = 2;
-    public float speed = 1;
-    public float followSpeed = 15;
+    float followSpeed = 15;
 
     // Start is called before the first frame update
     void Start()
@@ -22,19 +18,6 @@ public class Wave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1"))
-        {
-            x += Time.deltaTime;
-            Vector3 wave = Vector3.up * (amplitude * Mathf.Sin(speed * (x)));
-            ground[0].position = wave;
-        }
-
-        //height[1] = Mathf.Lerp(height[1], ground[0].position.y, Time.deltaTime * 10);
-        //ground[1].position = new Vector3(ground[1].position.x, height[1], ground[1].position.z);
-
-        //height[2] = Mathf.Lerp(height[2], ground[1].position.y, Time.deltaTime * 10);
-        //ground[2].position = new Vector3(ground[2].position.x, height[2], ground[2].position.z);
-
         WaveMove(1);
         WaveMove(2);
         WaveMove(3);
